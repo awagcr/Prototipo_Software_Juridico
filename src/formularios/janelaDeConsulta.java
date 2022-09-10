@@ -52,7 +52,7 @@ public class janelaDeConsulta extends JDialog {
 			texto = "Insira um nome, CPF ou CNPJ para iniciar a consulta";
 		}
 		else {
-			texto = "Insira o número do processo para iniciar a consulta";
+			texto = "Insira o nÃºmero do processo para iniciar a consulta";
 		}
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{

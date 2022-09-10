@@ -55,7 +55,19 @@ public class formularioPrincipal extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.ITALIC, 25));
 		
-		JButton btncadastraCliente = new JButton("Cadastrar cliente");
+		JButton btnCadastraCliente = new JButton("Cadastrar cliente");
+		btnCadastraCliente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					janelaDeCadastro cadastraCliente = new janelaDeCadastro();
+					cadastraCliente.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					cadastraCliente.setVisible(true);
+				} catch (Exception ex){
+					ex.printStackTrace();
+				}
+			}
+		});
 		
 		JButton btnConsultaCliente = new JButton("Consultar cliente");
 		btnConsultaCliente.addMouseListener(new MouseAdapter() {
@@ -83,7 +95,7 @@ public class formularioPrincipal extends JFrame {
 					.addContainerGap(39, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnConsultaCliente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btncadastraCliente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(btnCadastraCliente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(66)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(btnConsultaProcesso, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -97,7 +109,7 @@ public class formularioPrincipal extends JFrame {
 					.addGap(41)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(btncadastraCliente)
+							.addComponent(btnCadastraCliente)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addComponent(btnConsultaCliente))
 						.addGroup(gl_contentPane.createSequentialGroup()

@@ -20,6 +20,10 @@ import java.awt.event.MouseEvent;
 
 public class formularioBase extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textFieldNome;
 	private JTextField textFieldCPFCNPJ;
@@ -42,18 +46,19 @@ public class formularioBase extends JFrame {
 	 * Create the frame.
 	 */
 	public formularioBase() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 510, 439);
+		setBounds(100, 100, 512, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JLabel lblNewLabel = new JLabel("Clientes");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JLabel lblClientes = new JLabel("Clientes");
+		lblClientes.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome");
+		JLabel lblNome = new JLabel("Nome");
 		
-		JLabel cpfLabel = new JLabel("CPF");
+		JLabel lblCPF = new JLabel("CPF");
 		
 		textFieldNome = new JTextField();
 		textFieldNome.setColumns(10);
@@ -61,9 +66,9 @@ public class formularioBase extends JFrame {
 		textFieldCPFCNPJ = new JTextField();
 		textFieldCPFCNPJ.setColumns(10);
 		
-		JLabel telefoneLabel = new JLabel("Telefone");
+		JLabel lblTelefone = new JLabel("Telefone");
 		
-		JLabel emailLabel = new JLabel("E-mail");
+		JLabel lblEmail = new JLabel("E-mail");
 		
 		textFieldTelefone = new JTextField();
 		textFieldTelefone.setColumns(10);
@@ -71,17 +76,17 @@ public class formularioBase extends JFrame {
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(10);
 		
-		JLabel enderecoLabel = new JLabel("Endere\u00E7o");
-		enderecoLabel.setBackground(new Color(240, 240, 240));
+		JLabel lblEndereco = new JLabel("Endere\u00E7o");
+		lblEndereco.setBackground(new Color(240, 240, 240));
 		
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setColumns(10);
 		
-		JLabel CEPLabel = new JLabel("CEP");
+		JLabel lblCEP = new JLabel("CEP");
 		
-		JLabel cidadeLabel = new JLabel("Cidade");
+		JLabel lblCidade = new JLabel("Cidade");
 		
-		JLabel lblNewLabel_5 = new JLabel("Estado");
+		JLabel lblEstado = new JLabel("Estado");
 		
 		textFieldCidade = new JTextField();
 		textFieldCidade.setColumns(10);
@@ -96,7 +101,7 @@ public class formularioBase extends JFrame {
 				if(!EhNovoCliente())
 				{
 					JOptionPane confimaAlteracao = new JOptionPane();
-					confimaAlteracao.showConfirmDialog(btnSalvar, "Confirma alteração?", "Alterar cadastro", JOptionPane.YES_NO_OPTION);
+					confimaAlteracao.showConfirmDialog(btnSalvar, "Confirma alteraÃ§Ã£o?", "Alterar cadastro", JOptionPane.YES_NO_OPTION);
 				}
 				
 			}
@@ -106,15 +111,21 @@ public class formularioBase extends JFrame {
 		
 		JButton btnExcluir = new JButton("Excluir");
 		
-		JLabel lblNewLabel_2 = new JLabel("Data de Nascimento");
+		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
 		
 		JFormattedTextField formattedTextField = new JFormattedTextField();
 		
-		JLabel lblNewLabel_3 = new JLabel("Consulte");
+		JLabel lblConsultar = new JLabel("Consulte");
 		
 		JComboBox comboBox = new JComboBox();
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
 		
 		JButton btnCriar = new JButton("Novo");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -126,15 +137,15 @@ public class formularioBase extends JFrame {
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblNewLabel_3)
+									.addComponent(lblConsultar)
 									.addGap(18)
 									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(317)
-									.addComponent(cpfLabel, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(lblCPF, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap(68, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblNome, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(342, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addComponent(textFieldNome, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
@@ -142,9 +153,9 @@ public class formularioBase extends JFrame {
 							.addComponent(textFieldCPFCNPJ, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(15, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addComponent(telefoneLabel, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblTelefone, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(emailLabel, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblEmail, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(235, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
@@ -152,28 +163,28 @@ public class formularioBase extends JFrame {
 							.addComponent(textFieldEmail, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(163, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-							.addComponent(enderecoLabel)
+							.addComponent(lblEndereco)
 							.addContainerGap(429, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addComponent(textFieldEndereco, GroupLayout.PREFERRED_SIZE, 449, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(25, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(CEPLabel, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblCEP, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(textFieldCidade, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
-								.addComponent(cidadeLabel, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+								.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_5)
+								.addComponent(lblEstado)
 								.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 							.addContainerGap(50, Short.MAX_VALUE))
 						.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(formattedTextField, Alignment.LEADING)
-								.addComponent(lblNewLabel_2, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(lblDataDeNascimento, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 							.addContainerGap(378, Short.MAX_VALUE))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addComponent(btnCriar)
@@ -185,47 +196,47 @@ public class formularioBase extends JFrame {
 							.addComponent(btnCancelar)
 							.addContainerGap())
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addComponent(lblNewLabel)
+							.addComponent(lblClientes)
 							.addGap(212))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel)
+					.addComponent(lblClientes)
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_3)
+						.addComponent(lblConsultar)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1)
-						.addComponent(cpfLabel))
+						.addComponent(lblNome)
+						.addComponent(lblCPF))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textFieldNome, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textFieldCPFCNPJ, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel_2)
+					.addComponent(lblDataDeNascimento)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(formattedTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(telefoneLabel)
-						.addComponent(emailLabel))
+						.addComponent(lblTelefone)
+						.addComponent(lblEmail))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textFieldTelefone, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textFieldEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(enderecoLabel)
+					.addComponent(lblEndereco)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(textFieldEndereco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(CEPLabel)
-						.addComponent(cidadeLabel)
-						.addComponent(lblNewLabel_5))
+						.addComponent(lblCEP)
+						.addComponent(lblCidade)
+						.addComponent(lblEstado))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textFieldCEP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)

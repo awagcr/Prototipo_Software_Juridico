@@ -13,7 +13,7 @@ public class formularioDeCadastroPessoaFisica extends formularioBase {
 
 	private JPanel contentPane;
 	/**
-	 * @wbp.nonvisual location=74,189
+	 * @wbp.nonvisual location=174,189
 	 */
 	private final JFormattedTextField textFieldDataDeNascimento = new JFormattedTextField();
 	/**
