@@ -1,26 +1,32 @@
 package formularios;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+import javax.swing.JPanel;
+
+import dominio.PessoaJuridica;
+import dominio.PessoaNatural;
+
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JFormattedTextField;
-import javax.swing.JComboBox;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFormattedTextField;
+import javax.swing.GroupLayout;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+
+import java.text.ParseException;
 
 public class janelaDeCadastroPJ extends JFrame {
 
@@ -49,6 +55,8 @@ public class janelaDeCadastroPJ extends JFrame {
 	 * Create the frame.
 	 */
 	public janelaDeCadastroPJ() {
+		
+		PessoaJuridica pessoaJuridica = new PessoaJuridica();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 440);
@@ -82,9 +90,11 @@ public class janelaDeCadastroPJ extends JFrame {
 		
 		textFieldRazãoSocial = new JTextField();
 		textFieldRazãoSocial.setColumns(10);
+		pessoaJuridica.setRazaoSocial(textFieldRazãoSocial.getText());
 		
 		textFieldRespLegal = new JTextField();
 		textFieldRespLegal.setColumns(10);
+		pessoaJuridica.setResponsavelLegal(textFieldRespLegal.getText());
 		
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(10);
@@ -112,12 +122,11 @@ public class janelaDeCadastroPJ extends JFrame {
 		}
 
 		JFormattedTextField formattedTextFieldCNPJ = new JFormattedTextField(mascaraCNPJ);
+		pessoaJuridica.setCNPJ(Integer.parseInt(formattedTextFieldCNPJ.getText()));
 
 		JFormattedTextField formattedTextFieldTel = new JFormattedTextField(mascaraTel);
 
 		JFormattedTextField formattedTextFieldCEP = new JFormattedTextField(mascaraCEP);
-		
-		JComboBox comboBox = new JComboBox();
 		
 		JButton btnCriar = new JButton("Novo");
 		
@@ -139,9 +148,11 @@ public class janelaDeCadastroPJ extends JFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				janelaDeCadastroPJ.this.dispose();
 			}
 		});
+		
+		JComboBox comboBox = new JComboBox();
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

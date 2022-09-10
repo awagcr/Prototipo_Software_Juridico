@@ -1,28 +1,31 @@
 package formularios;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import dominio.PessoaNatural;
+
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import java.awt.Font;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JFormattedTextField;
-import javax.swing.JComboBox;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JFormattedTextField;
+import javax.swing.GroupLayout;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+
+import java.text.ParseException;
+
 
 public class janelaDeCadastroPF extends JFrame {
 
@@ -50,6 +53,8 @@ public class janelaDeCadastroPF extends JFrame {
 	 * Create the frame.
 	 */
 	public janelaDeCadastroPF() {
+		
+		PessoaNatural pessoaFisica = new PessoaNatural();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 512, 440);
@@ -83,18 +88,23 @@ public class janelaDeCadastroPF extends JFrame {
 		
 		textFieldNome = new JTextField();
 		textFieldNome.setColumns(10);
+		pessoaFisica.setNome(textFieldNome.getText());
 		
 		textFieldEmail = new JTextField();
 		textFieldEmail.setColumns(10);
+		pessoaFisica.setEmail(textFieldEmail.getText());
 		
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setColumns(10);
+		pessoaFisica.setEndereco(textFieldEndereco.getText());
 		
 		textFieldCidade = new JTextField();
 		textFieldCidade.setColumns(10);
+		pessoaFisica.setCidade(textFieldCidade.getText());
 		
 		textFieldEstado = new JTextField();
 		textFieldEstado.setColumns(10);
+		pessoaFisica.setEstado(textFieldEstado.getText());
 		
 		MaskFormatter mascaraDate = null;
 		MaskFormatter mascaraCPF = null;
@@ -112,12 +122,16 @@ public class janelaDeCadastroPF extends JFrame {
 		}
 		
 		JFormattedTextField formattedTextFieldDate = new JFormattedTextField(mascaraDate);
+		pessoaFisica.setDataDeNascimento(Integer.parseInt(formattedTextFieldDate.getText()));
 		
 		JFormattedTextField formattedTextFieldCPF = new JFormattedTextField(mascaraCPF);
+		pessoaFisica.setCPF(Integer.parseInt(formattedTextFieldCPF.getText()));
 		
 		JFormattedTextField formattedTextFieldTel = new JFormattedTextField(mascaraTel);
+		pessoaFisica.setTelefone(Integer.parseInt(formattedTextFieldTel.getText()));
 		
 		JFormattedTextField formattedTextFieldCEP = new JFormattedTextField(mascaraCEP);
+		pessoaFisica.setCEP(Integer.parseInt(formattedTextFieldCEP.getText()));
 		
 		JButton btnCriar = new JButton("Novo");
 		
@@ -139,7 +153,7 @@ public class janelaDeCadastroPF extends JFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				janelaDeCadastroPF.this.dispose();
 			}
 		});
 		
