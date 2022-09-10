@@ -68,43 +68,43 @@ public class janelaDeCadastroPF extends JFrame {
 		JLabel lblEndereco = new JLabel("Endere\u00E7o");
 		lblEndereco.setBackground(new Color(240, 240, 240));
 		
+		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
+		
 		JLabel lblConsultar = new JLabel("Consulte");
+		
+		JLabel lblTelefone = new JLabel("Telefone");
+		
+		JLabel lblEstado = new JLabel("Estado");
+		
+		JLabel lblCidade = new JLabel("Cidade");
+		
+		JLabel lblEmail = new JLabel("E-mail");
 		
 		JLabel lblNome = new JLabel("Nome");
 		
 		JLabel lblCPF = new JLabel("CPF");
 		
-		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
-
-		JLabel lblTelefone = new JLabel("Telefone");
-		
-		JLabel lblEmail = new JLabel("E-mail");
-		
 		JLabel lblCEP = new JLabel("CEP");
-		
-		JLabel lblCidade = new JLabel("Cidade");
-		
-		JLabel lblEstado = new JLabel("Estado");
-		
-		textFieldNome = new JTextField();
-		textFieldNome.setColumns(10);
-		pessoaFisica.setNome(textFieldNome.getText());
-		
-		textFieldEmail = new JTextField();
-		textFieldEmail.setColumns(10);
-		pessoaFisica.setEmail(textFieldEmail.getText());
 		
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setColumns(10);
 		pessoaFisica.setEndereco(textFieldEndereco.getText());
 		
+		textFieldEstado = new JTextField();
+		textFieldEstado.setColumns(10);
+		pessoaFisica.setEstado(textFieldEstado.getText());
+		
 		textFieldCidade = new JTextField();
 		textFieldCidade.setColumns(10);
 		pessoaFisica.setCidade(textFieldCidade.getText());
 		
-		textFieldEstado = new JTextField();
-		textFieldEstado.setColumns(10);
-		pessoaFisica.setEstado(textFieldEstado.getText());
+		textFieldEmail = new JTextField();
+		textFieldEmail.setColumns(10);
+		pessoaFisica.setEmail(textFieldEmail.getText());
+		
+		textFieldNome = new JTextField();
+		textFieldNome.setColumns(10);
+		pessoaFisica.setNome(textFieldNome.getText());
 		
 		MaskFormatter mascaraDate = null;
 		MaskFormatter mascaraCPF = null;

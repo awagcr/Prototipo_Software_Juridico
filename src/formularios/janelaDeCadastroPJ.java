@@ -70,43 +70,47 @@ public class janelaDeCadastroPJ extends JFrame {
 		JLabel lblEndereco = new JLabel("Endere\u00E7o");
 		lblEndereco.setBackground(new Color(240, 240, 240));
 		
+		JLabel lblRespLegal = new JLabel("Responsável Legal");
+		
 		JLabel lblRazãoSocial = new JLabel("Razão Social");
-		
-		JLabel lblCNPJ = new JLabel("CNPJ");
-		
-		JLabel lblTelefone = new JLabel("Telefone");
-		
-		JLabel lblEmail = new JLabel("E-mail");
-		
-		JLabel lblCEP = new JLabel("CEP");
-		
-		JLabel lblCidade = new JLabel("Cidade");
-		
-		JLabel lblEstado = new JLabel("Estado");
 		
 		JLabel lblConsultar = new JLabel("Consulte");
 		
-		JLabel lblRespLegal = new JLabel("Responsável Legal");
+		JLabel lblTelefone = new JLabel("Telefone");
 		
-		textFieldRazãoSocial = new JTextField();
-		textFieldRazãoSocial.setColumns(10);
-		pessoaJuridica.setRazaoSocial(textFieldRazãoSocial.getText());
+		JLabel lblEstado = new JLabel("Estado");
+		
+		JLabel lblCidade = new JLabel("Cidade");
+		
+		JLabel lblEmail = new JLabel("E-mail");
+		
+		JLabel lblCNPJ = new JLabel("CNPJ");
+
+		JLabel lblCEP = new JLabel("CEP");
 		
 		textFieldRespLegal = new JTextField();
 		textFieldRespLegal.setColumns(10);
 		pessoaJuridica.setResponsavelLegal(textFieldRespLegal.getText());
 		
-		textFieldEmail = new JTextField();
-		textFieldEmail.setColumns(10);
+		textFieldRazãoSocial = new JTextField();
+		textFieldRazãoSocial.setColumns(10);
+		pessoaJuridica.setRazaoSocial(textFieldRazãoSocial.getText());
 		
 		textFieldEndereco = new JTextField();
 		textFieldEndereco.setColumns(10);
-		
-		textFieldCidade = new JTextField();
-		textFieldCidade.setColumns(10);
+		pessoaJuridica.setEndereco(textFieldEndereco.getText());
 		
 		textFieldEstado = new JTextField();
 		textFieldEstado.setColumns(10);
+		pessoaJuridica.setEstado(textFieldEstado.getText());
+		
+		textFieldCidade = new JTextField();
+		textFieldCidade.setColumns(10);
+		pessoaJuridica.setCidade(textFieldCidade.getText());
+		
+		textFieldEmail = new JTextField();
+		textFieldEmail.setColumns(10);
+		pessoaJuridica.setEmail(textFieldEmail.getText());
 		
 		MaskFormatter mascaraCNPJ = null;
 		MaskFormatter mascaraTel = null;
@@ -125,8 +129,10 @@ public class janelaDeCadastroPJ extends JFrame {
 		pessoaJuridica.setCNPJ(Integer.parseInt(formattedTextFieldCNPJ.getText()));
 
 		JFormattedTextField formattedTextFieldTel = new JFormattedTextField(mascaraTel);
+		pessoaJuridica.setTelefone(Integer.parseInt(formattedTextFieldTel.getText()));
 
 		JFormattedTextField formattedTextFieldCEP = new JFormattedTextField(mascaraCEP);
+		pessoaJuridica.setCEP(Integer.parseInt(formattedTextFieldCEP.getText()));
 		
 		JButton btnCriar = new JButton("Novo");
 		
