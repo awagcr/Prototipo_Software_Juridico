@@ -1,7 +1,6 @@
 package formularios;
 
 import javax.swing.JFrame;
-
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 import javax.swing.JPanel;
@@ -17,11 +16,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.io.FileWriter;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFormattedTextField;
+import javax.swing.AbstractButton;
 import javax.swing.GroupLayout;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -35,20 +36,36 @@ public class janelaDeCadastroPJ extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textFieldRazãoSocial;
-	private JTextField textFieldEmail;
-	private JTextField textFieldEndereco;
-	private JTextField textFieldCidade;
-	private JTextField textFieldEstado;
+	private JTextField tfRazãoSocial;
+	private JTextField tfEmail;
+	private JTextField tfEndereco;
+	private JTextField tfCidade;
+	private JTextField tfEstado;
+	private JTextField tfRespLegal;
+	private AbstractButton ftdCNPJ;
+	private AbstractButton formattedTextFieldDate;
+	private AbstractButton ftdTel;
+	private AbstractButton ftdCEP;
 	
 	private boolean ehNovoCliente;
-	private JTextField textFieldRespLegal;
 	protected boolean EhNovoCliente() {
 		return ehNovoCliente;
 	}
 
 	protected void setNovoCliente(boolean ehNovoCliente) {
 		this.ehNovoCliente = ehNovoCliente;
+	}
+	
+	public void limparCadastro() {
+		tfRazãoSocial.setText("");
+		tfEmail.setText("");
+		tfEndereco.setText("");
+		tfCidade.setText("");
+		tfEstado.setText("");
+		ftdCNPJ.setText("");
+		formattedTextFieldDate.setText("");
+		ftdTel.setText("");
+		ftdCEP.setText("");
 	}
 
 	/**
@@ -65,52 +82,69 @@ public class janelaDeCadastroPJ extends JFrame {
 		setContentPane(contentPane);
 		
 		JLabel lblClientes = new JLabel("Clientes");
+		lblClientes.setBounds(220, 16, 49, 19);
 		lblClientes.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JLabel lblEndereco = new JLabel("Endere\u00E7o");
+		lblEndereco.setBounds(15, 234, 45, 14);
 		lblEndereco.setBackground(new Color(240, 240, 240));
 		
 		JLabel lblRespLegal = new JLabel("Responsável Legal");
+		lblRespLegal.setBounds(15, 132, 89, 14);
 		
 		JLabel lblRazãoSocial = new JLabel("Razão Social");
+		lblRazãoSocial.setBounds(15, 81, 132, 14);
 		
 		JLabel lblConsultar = new JLabel("Consulte");
+		lblConsultar.setBounds(15, 45, 42, 14);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
+		lblTelefone.setBounds(15, 183, 132, 14);
 		
 		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(321, 297, 33, 14);
 		
 		JLabel lblCidade = new JLabel("Cidade");
+		lblCidade.setBounds(165, 297, 89, 14);
 		
 		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setBounds(165, 183, 89, 14);
 		
 		JLabel lblCNPJ = new JLabel("CNPJ");
+		lblCNPJ.setBounds(332, 81, 89, 14);
 
 		JLabel lblCEP = new JLabel("CEP");
+		lblCEP.setBounds(15, 297, 132, 14);
 		
-		textFieldRespLegal = new JTextField();
-		textFieldRespLegal.setColumns(10);
-		pessoaJuridica.setResponsavelLegal(textFieldRespLegal.getText());
+		tfRespLegal = new JTextField();
+		tfRespLegal.setBounds(15, 152, 194, 20);
+		tfRespLegal.setColumns(10);
+		pessoaJuridica.setResponsavelLegal(tfRespLegal.getText());
 		
-		textFieldRazãoSocial = new JTextField();
-		textFieldRazãoSocial.setColumns(10);
-		pessoaJuridica.setRazaoSocial(textFieldRazãoSocial.getText());
+		tfRazãoSocial = new JTextField();
+		tfRazãoSocial.setBounds(15, 101, 299, 20);
+		tfRazãoSocial.setColumns(10);
+		pessoaJuridica.setRazaoSocial(tfRazãoSocial.getText());
 		
-		textFieldEndereco = new JTextField();
-		textFieldEndereco.setColumns(10);
-		pessoaJuridica.setEndereco(textFieldEndereco.getText());
+		tfEndereco = new JTextField();
+		tfEndereco.setBounds(15, 259, 466, 20);
+		tfEndereco.setColumns(10);
+		pessoaJuridica.setEndereco(tfEndereco.getText());
 		
-		textFieldEstado = new JTextField();
-		textFieldEstado.setColumns(10);
-		pessoaJuridica.setEstado(textFieldEstado.getText());
+		tfEstado = new JTextField();
+		tfEstado.setBounds(321, 317, 130, 20);
+		tfEstado.setColumns(10);
+		pessoaJuridica.setEstado(tfEstado.getText());
 		
-		textFieldCidade = new JTextField();
-		textFieldCidade.setColumns(10);
-		pessoaJuridica.setCidade(textFieldCidade.getText());
+		tfCidade = new JTextField();
+		tfCidade.setBounds(165, 317, 138, 20);
+		tfCidade.setColumns(10);
+		pessoaJuridica.setCidade(tfCidade.getText());
 		
-		textFieldEmail = new JTextField();
-		textFieldEmail.setColumns(10);
-		pessoaJuridica.setEmail(textFieldEmail.getText());
+		tfEmail = new JTextField();
+		tfEmail.setBounds(165, 203, 161, 20);
+		tfEmail.setColumns(10);
+		pessoaJuridica.setEmail(tfEmail.getText());
 		
 		MaskFormatter mascaraCNPJ = null;
 		MaskFormatter mascaraTel = null;
@@ -125,151 +159,105 @@ public class janelaDeCadastroPJ extends JFrame {
 			System.exit(-1);
 		}
 
-		JFormattedTextField formattedTextFieldCNPJ = new JFormattedTextField(mascaraCNPJ);
-		pessoaJuridica.setCNPJ(Integer.parseInt(formattedTextFieldCNPJ.getText()));
+		JFormattedTextField ftdCNPJ = new JFormattedTextField(mascaraCNPJ);
+		ftdCNPJ.setBounds(332, 101, 149, 20);
+		pessoaJuridica.setCNPJ(Integer.parseInt(ftdCNPJ.getText()));
 
-		JFormattedTextField formattedTextFieldTel = new JFormattedTextField(mascaraTel);
-		pessoaJuridica.setTelefone(Integer.parseInt(formattedTextFieldTel.getText()));
+		JFormattedTextField ftdTel = new JFormattedTextField(mascaraTel);
+		ftdTel.setBounds(15, 203, 132, 20);
+		pessoaJuridica.setTelefone(Integer.parseInt(ftdTel.getText()));
 
-		JFormattedTextField formattedTextFieldCEP = new JFormattedTextField(mascaraCEP);
-		pessoaJuridica.setCEP(Integer.parseInt(formattedTextFieldCEP.getText()));
+		JFormattedTextField ftdCEP = new JFormattedTextField(mascaraCEP);
+		ftdCEP.setBounds(15, 317, 132, 20);
+		pessoaJuridica.setCEP(Integer.parseInt(ftdCEP.getText()));
 		
 		JButton btnCriar = new JButton("Novo");
+		btnCriar.setBounds(205, 355, 57, 23);
+		btnCriar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCadastro();
+			}
+		});
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if(!EhNovoCliente())
-				{
-					JOptionPane confimaAlteracao = new JOptionPane();
-					confimaAlteracao.showConfirmDialog(btnSalvar, "Confirma alteração?", "Alterar cadastro", JOptionPane.YES_NO_OPTION);
-				}
+		btnSalvar.setBounds(268, 355, 63, 23);
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				
+				String s1 = tfRazãoSocial.getText();
+				String s2 = tfEmail.getText();
+				String s3 = tfEndereco.getText();
+				String s4 = tfCidade.getText();
+				String s5 = tfEstado.getText();
+				String s6 = tfRespLegal.getText();
+				String s7 = ftdCNPJ.getText();
+				String s8 = ftdTel.getText();
+				String s9 = ftdCEP.getText();
+				
+				if(e.getSource() == btnSalvar) {
+					try {
+						FileWriter w = new FileWriter("ClientePJ.txt", true);
+						
+						w.write(s1 + "\n");
+						w.write(s2 + "\n");
+						w.write(s3 + "\n");
+						w.write(s4 + "\n");
+						w.write(s5 + "\n");
+						w.write(s6 + "\n");
+						w.write(s7 + "\n");
+						w.write(s8 + "\n");
+						w.write(s9 + "\n");
+						w.close();
+					} catch (Exception ae) {
+						System.out.println(ae);
+					}
+
+					JOptionPane.showConfirmDialog(btnSalvar, "Confirma alteração?", "Alterar cadastro", JOptionPane.YES_NO_OPTION);
+				}
+//				if(!EhNovoCliente()) {
+//					JOptionPane.showConfirmDialog(btnSalvar, "Confirma alteração?", "Alterar cadastro", JOptionPane.YES_NO_OPTION);
+//				}
 			}
 		});
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(337, 355, 63, 23);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBounds(406, 355, 75, 23);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				janelaDeCadastroPJ.this.dispose();
 			}
 		});
 		
-		JComboBox comboBox = new JComboBox();
-		
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addContainerGap()
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(lblConsultar)
-									.addGap(18)
-									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(317)
-									.addComponent(lblCNPJ, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblRazãoSocial, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblEndereco)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-										.addComponent(formattedTextFieldCEP)
-										.addComponent(lblCEP, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(textFieldCidade, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
-										.addComponent(lblCidade, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
-									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblEstado)
-										.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)))
-								.addComponent(lblRespLegal)
-								.addComponent(textFieldRespLegal, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(textFieldRazãoSocial, GroupLayout.PREFERRED_SIZE, 299, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(formattedTextFieldCNPJ, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
-								.addComponent(textFieldEndereco)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
-										.addComponent(formattedTextFieldTel)
-										.addComponent(lblTelefone, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
-									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblEmail, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
-										.addComponent(textFieldEmail, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(215)
-							.addComponent(lblClientes)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(200, Short.MAX_VALUE)
-					.addComponent(btnCriar)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnSalvar)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnExcluir)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnCancelar)
-					.addContainerGap())
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblClientes)
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblConsultar)
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblRazãoSocial)
-						.addComponent(lblCNPJ))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldRazãoSocial, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(formattedTextFieldCNPJ, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblRespLegal)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(textFieldRespLegal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(11)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblTelefone)
-						.addComponent(lblEmail))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldEmail, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(formattedTextFieldTel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblEndereco)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(textFieldEndereco, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblCEP)
-						.addComponent(lblCidade)
-						.addComponent(lblEstado))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textFieldCidade, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textFieldEstado, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(formattedTextFieldCEP, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancelar)
-						.addComponent(btnExcluir)
-						.addComponent(btnSalvar)
-						.addComponent(btnCriar))
-					.addGap(77))
-		);
-		contentPane.setLayout(gl_contentPane);
+		JComboBox<Object> comboBox = new JComboBox<Object>();
+		comboBox.setBounds(75, 41, 30, 22);
+		contentPane.setLayout(null);
+		contentPane.add(lblConsultar);
+		contentPane.add(comboBox);
+		contentPane.add(lblCNPJ);
+		contentPane.add(lblRazãoSocial);
+		contentPane.add(lblEndereco);
+		contentPane.add(ftdCEP);
+		contentPane.add(lblCEP);
+		contentPane.add(tfCidade);
+		contentPane.add(lblCidade);
+		contentPane.add(lblEstado);
+		contentPane.add(tfEstado);
+		contentPane.add(lblRespLegal);
+		contentPane.add(tfRespLegal);
+		contentPane.add(tfRazãoSocial);
+		contentPane.add(ftdCNPJ);
+		contentPane.add(tfEndereco);
+		contentPane.add(ftdTel);
+		contentPane.add(lblTelefone);
+		contentPane.add(lblEmail);
+		contentPane.add(tfEmail);
+		contentPane.add(lblClientes);
+		contentPane.add(btnCriar);
+		contentPane.add(btnSalvar);
+		contentPane.add(btnExcluir);
+		contentPane.add(btnCancelar);
 	}
 }

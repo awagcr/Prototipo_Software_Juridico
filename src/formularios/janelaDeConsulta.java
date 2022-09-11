@@ -21,6 +21,10 @@ import java.awt.event.MouseEvent;
 
 public class janelaDeConsulta extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JLabel textoConsulta;
 	private JTextField textField;
@@ -47,19 +51,20 @@ public class janelaDeConsulta extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		String texto = "";
-		if(tipoConsulta.equals("cliente"))
-		{
+		if(tipoConsulta.equals("cliente")) {
 			texto = "Insira um nome, CPF ou CNPJ para iniciar a consulta";
-		}
-		else {
+		} else {
 			texto = "Insira o número do processo para iniciar a consulta";
 		}
+
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			textoConsulta = new JLabel(texto);
 		}
+
 		textField = new JTextField();
 		textField.setColumns(10);
+		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.TRAILING)

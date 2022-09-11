@@ -46,8 +46,8 @@ public class janelaDeCadastro extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
-			lblTitulo = new JLabel("Tipo de Cadastro");
-			lblTitulo.setFont(new Font("Times New Roman", Font.ITALIC, 25));
+			lblTitulo = new JLabel("Tipo de Cliente");
+			lblTitulo.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		}
 		{
 			btnPessoaFisica = new JButton("Pessoa Física");
