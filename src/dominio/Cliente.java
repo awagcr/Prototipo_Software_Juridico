@@ -7,4 +7,12 @@ public abstract class Cliente extends Pessoa {
 	public void gerarContrato() {
 
 	}
+
+	public boolean isEhAutor() {
+		return ehAutor;
+	}
+	public void setEhAutor(boolean ehAutor) {
+		this.ehAutor = ehAutor;
+	}
+	
 }

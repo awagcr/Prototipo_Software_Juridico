@@ -1,8 +1,7 @@
 package formularios;
 
 import javax.swing.border.EmptyBorder;
-import javax.swing.text.MaskFormatter;
-
+//import javax.swing.text.MaskFormatter;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -16,13 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JFormattedTextField;
-import javax.swing.AbstractButton;
+//import javax.swing.JFormattedTextField;
+//import javax.swing.AbstractButton;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import java.io.FileWriter;
 
-import java.text.ParseException;
+//import java.text.ParseException;
 
 
 public class janelaDeCadastroPF extends JFrame {
@@ -61,10 +60,10 @@ public class janelaDeCadastroPF extends JFrame {
 		tfEndereco.setText("");
 		tfCidade.setText("");
 		tfEstado.setText("");
-		tfCPF.setText("");
-		tfDate.setText("");
-		tfTel.setText("");
-		tfCEP.setText("");
+//		tfCPF.setText("");
+//		tfDate.setText("");
+//		tfTel.setText("");
+//		tfCEP.setText("");
 //		ftdCPF.setText("");
 //		ftdDate.setText("");
 //		ftdTel.setText("");
@@ -144,25 +143,30 @@ public class janelaDeCadastroPF extends JFrame {
 		tfNome.setColumns(10);
 		pessoaFisica.setNome(tfNome.getText());
 		
-		tfCPF = new JTextField();
-		tfCPF.setBounds(332, 101, 132, 20);		
-		tfCPF.setColumns(10);
-//		pessoaFisica.setCPF(Integer.parseInt(tfCPF.getText()));
+		try {
+			tfCPF = new JTextField();
+			tfCPF.setBounds(332, 101, 132, 20);
+			tfCPF.setColumns(10);
+			pessoaFisica.setCPF(Integer.parseInt(tfCPF.getText()));
+			
+			tfDate = new JTextField();
+			tfDate.setBounds(15, 152, 120, 20);
+			tfDate.setColumns(10);
+			pessoaFisica.setDataDeNascimento(Integer.parseInt(tfDate.getText()));
+			
+			tfTel = new JTextField();
+			tfTel.setBounds(15, 203, 140, 20);
+			tfTel.setColumns(10);
+			pessoaFisica.setTelefone(Integer.parseInt(tfTel.getText()));
+			
+			tfCEP = new JTextField();
+			tfCEP.setBounds(15, 317, 126, 20);
+			tfCEP.setColumns(10);
+			pessoaFisica.setCEP(Integer.parseInt(tfCEP.getText()));
+		} catch (NumberFormatException nfe) {
+			System.out.println("NumberFormat Exception: invalid input string");
+		}
 		
-		tfDate = new JTextField();
-		tfDate.setBounds(15, 152, 120, 20);
-		tfDate.setColumns(10);
-//		pessoaFisica.setDataDeNascimento(Integer.parseInt(tfDate.getText()));
-		
-		tfTel = new JTextField();
-		tfTel.setBounds(15, 203, 140, 20);
-		tfTel.setColumns(10);
-//		pessoaFisica.setTelefone(Integer.parseInt(tfTel.getText()));
-		
-		tfCEP = new JTextField();
-		tfCEP.setBounds(15, 317, 126, 20);		
-		tfCEP.setColumns(10);
-//		pessoaFisica.setCEP(Integer.parseInt(tfCEP.getText()));
 		
 //		MaskFormatter mascaraDate = null;
 //		MaskFormatter mascaraCPF = null;
@@ -285,10 +289,14 @@ public class janelaDeCadastroPF extends JFrame {
 		contentPane.add(btnExcluir);
 		contentPane.add(btnCancelar);
 		contentPane.add(comboBox);
-		contentPane.add(tfCPF);
-		contentPane.add(tfDate);
-		contentPane.add(tfTel);
-		contentPane.add(tfCEP);
+		try {
+			contentPane.add(tfCPF);
+			contentPane.add(tfDate);
+			contentPane.add(tfTel);
+			contentPane.add(tfCEP);
+		} catch (NullPointerException npe) {
+			System.out.println("Erro aqui");
+		}		
 		contentPane.add(tfNome);
 		contentPane.add(tfEmail);
 		contentPane.add(tfCidade);

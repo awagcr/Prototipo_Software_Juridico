@@ -12,12 +12,8 @@ import dominio.Cliente;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class janelaDeConsulta extends JDialog {
 
@@ -53,8 +49,18 @@ public class janelaDeConsulta extends JDialog {
 		String texto = "";
 		if(tipoConsulta.equals("cliente")) {
 			texto = "Insira um nome, CPF ou CNPJ para iniciar a consulta";
+			try {
+				janelaDeConsultaPF consultaPF = new janelaDeConsultaPF();
+				consultaPF.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+				consultaPF.setVisible(true);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
 		} else {
 			texto = "Insira o número do processo para iniciar a consulta";
+			janelaDeConsultaPJ consultaPJ = new janelaDeConsultaPJ();
+			consultaPJ.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+			consultaPJ.setVisible(true);
 		}
 
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -81,12 +87,12 @@ public class janelaDeConsulta extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancelar");
-				cancelButton.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
 						janelaDeConsulta.this.dispose();
 					}
-			 });
+				});
+				
 
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);

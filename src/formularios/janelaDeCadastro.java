@@ -51,9 +51,8 @@ public class janelaDeCadastro extends JDialog {
 		}
 		{
 			btnPessoaFisica = new JButton("Pessoa Física");
-			btnPessoaFisica.addMouseListener(new MouseAdapter() {
-				@Override
-				public void mouseClicked(MouseEvent e) {
+			btnPessoaFisica.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
 					try {
 						janelaDeCadastroPF cadastraPF = new janelaDeCadastroPF();
 						cadastraPF.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -63,6 +62,7 @@ public class janelaDeCadastro extends JDialog {
 					}
 				}
 			});
+			
 		}
 		{
 			btnPessoaJuridica = new JButton("Pessoa Jurídica");
