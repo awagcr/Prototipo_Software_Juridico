@@ -1,31 +1,25 @@
 package formularios;
 
-import javax.swing.JFrame;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 import dominio.PessoaJuridica;
-import dominio.PessoaNatural;
 
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.io.FileWriter;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JFormattedTextField;
 import javax.swing.AbstractButton;
-import javax.swing.GroupLayout;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.io.FileWriter;
 
 import java.text.ParseException;
 
@@ -119,7 +113,7 @@ public class janelaDeCadastroPJ extends JFrame {
 		tfRespLegal = new JTextField();
 		tfRespLegal.setBounds(15, 152, 194, 20);
 		tfRespLegal.setColumns(10);
-		pessoaJuridica.setResponsavelLegal(tfRespLegal.getText());
+		pessoaJuridica.setResponsavelLegal(null);
 		
 		tfRazãoSocial = new JTextField();
 		tfRazãoSocial.setBounds(15, 101, 299, 20);

@@ -36,13 +36,17 @@ public class janelaDeCadastroPF extends JFrame {
 	private JTextField tfEmail;
 	private JTextField tfEndereco;
 	private JTextField tfCidade;
-	private JTextField tfEstado;
-	private AbstractButton ftdCPF;
-	private AbstractButton ftdDate;
-	private AbstractButton ftdTel;
-	private AbstractButton ftdCEP;
-	
+	private JTextField tfEstado;	
+	private JTextField tfCPF;
+	private JTextField tfDate;
+	private JTextField tfTel;
+	private JTextField tfCEP;
+//	private AbstractButton ftdCPF;
+//	private AbstractButton ftdDate;
+//	private AbstractButton ftdTel;
+//	private AbstractButton ftdCEP;
 	private boolean ehNovoCliente;
+	
 	protected boolean EhNovoCliente() {
 		return ehNovoCliente;
 	}
@@ -57,10 +61,14 @@ public class janelaDeCadastroPF extends JFrame {
 		tfEndereco.setText("");
 		tfCidade.setText("");
 		tfEstado.setText("");
-		ftdCPF.setText("");
-		ftdDate.setText("");
-		ftdTel.setText("");
-		ftdCEP.setText("");
+		tfCPF.setText("");
+		tfDate.setText("");
+		tfTel.setText("");
+		tfCEP.setText("");
+//		ftdCPF.setText("");
+//		ftdDate.setText("");
+//		ftdTel.setText("");
+//		ftdCEP.setText("");
 	}
 
 	/**
@@ -81,20 +89,20 @@ public class janelaDeCadastroPF extends JFrame {
 		lblClientes.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JLabel lblEndereco = new JLabel("Endere\u00E7o");
-		lblEndereco.setBounds(15, 234, 45, 14);
+		lblEndereco.setBounds(15, 234, 75, 14);
 		lblEndereco.setBackground(new Color(240, 240, 240));
 		
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento");
-		lblDataDeNascimento.setBounds(15, 132, 96, 14);
+		lblDataDeNascimento.setBounds(15, 132, 120, 14);
 		
 		JLabel lblConsultar = new JLabel("Consulte");
-		lblConsultar.setBounds(15, 45, 42, 14);
+		lblConsultar.setBounds(15, 45, 75, 14);
 		
 		JLabel lblTelefone = new JLabel("Telefone");
 		lblTelefone.setBounds(15, 183, 132, 14);
 		
 		JLabel lblEstado = new JLabel("Estado");
-		lblEstado.setBounds(321, 297, 33, 14);
+		lblEstado.setBounds(321, 297, 63, 14);
 		
 		JLabel lblCidade = new JLabel("Cidade");
 		lblCidade.setBounds(165, 297, 89, 14);
@@ -117,7 +125,7 @@ public class janelaDeCadastroPF extends JFrame {
 		pessoaFisica.setEndereco(tfEndereco.getText());
 		
 		tfEstado = new JTextField();
-		tfEstado.setBounds(321, 317, 130, 20);
+		tfEstado.setBounds(321, 317, 143, 20);
 		tfEstado.setColumns(10);
 		pessoaFisica.setEstado(tfEstado.getText());
 		
@@ -136,39 +144,59 @@ public class janelaDeCadastroPF extends JFrame {
 		tfNome.setColumns(10);
 		pessoaFisica.setNome(tfNome.getText());
 		
-		MaskFormatter mascaraDate = null;
-		MaskFormatter mascaraCPF = null;
-		MaskFormatter mascaraTel = null;
-		MaskFormatter mascaraCEP = null;
+		tfCPF = new JTextField();
+		tfCPF.setBounds(332, 101, 132, 20);		
+		tfCPF.setColumns(10);
+//		pessoaFisica.setCPF(Integer.parseInt(tfCPF.getText()));
 		
-		try {
-			mascaraDate = new MaskFormatter("##/##/####");
-			mascaraCPF = new MaskFormatter("###.###.###-##");
-			mascaraTel = new MaskFormatter("(##)#####-####");
-			mascaraCEP = new MaskFormatter("#####-###");
-		} catch (ParseException excp) {
-			System.err.println("Erro na formatação: " + excp.getMessage());
-			System.exit(-1);
-		}
+		tfDate = new JTextField();
+		tfDate.setBounds(15, 152, 120, 20);
+		tfDate.setColumns(10);
+//		pessoaFisica.setDataDeNascimento(Integer.parseInt(tfDate.getText()));
 		
-		JFormattedTextField ftdDate = new JFormattedTextField(mascaraDate);
-		ftdDate.setBounds(15, 152, 122, 20);
-		pessoaFisica.setDataDeNascimento(Integer.parseInt(ftdDate.getText()));
+		tfTel = new JTextField();
+		tfTel.setBounds(15, 203, 140, 20);
+		tfTel.setColumns(10);
+//		pessoaFisica.setTelefone(Integer.parseInt(tfTel.getText()));
 		
-		JFormattedTextField ftdCPF = new JFormattedTextField(mascaraCPF);
-		ftdCPF.setBounds(332, 101, 149, 20);
-		pessoaFisica.setCPF(Integer.parseInt(ftdCPF.getText()));
+		tfCEP = new JTextField();
+		tfCEP.setBounds(15, 317, 126, 20);		
+		tfCEP.setColumns(10);
+//		pessoaFisica.setCEP(Integer.parseInt(tfCEP.getText()));
 		
-		JFormattedTextField ftdTel = new JFormattedTextField(mascaraTel);
-		ftdTel.setBounds(15, 203, 132, 20);
-		pessoaFisica.setTelefone(Integer.parseInt(ftdTel.getText()));
-		
-		JFormattedTextField ftdCEP = new JFormattedTextField(mascaraCEP);
-		ftdCEP.setBounds(15, 317, 120, 20);
-		pessoaFisica.setCEP(Integer.parseInt(ftdCEP.getText()));
+//		MaskFormatter mascaraDate = null;
+//		MaskFormatter mascaraCPF = null;
+//		MaskFormatter mascaraTel = null;
+//		MaskFormatter mascaraCEP = null;
+//		
+//		try {
+//			mascaraDate = new MaskFormatter("##/##/####");
+//			mascaraCPF = new MaskFormatter("###.###.###-##");
+//			mascaraTel = new MaskFormatter("(##)#####-####");
+//			mascaraCEP = new MaskFormatter("#####-###");
+//		} catch (ParseException excp) {
+//			System.err.println("Erro na formatação: " + excp.getMessage());
+//			System.exit(-1);
+//		}
+//		
+//		JFormattedTextField ftdDate = new JFormattedTextField(mascaraDate);
+//		ftdDate.setBounds(15, 152, 122, 20);
+//		pessoaFisica.setDataDeNascimento(Integer.parseInt(ftdDate.getText()));
+//		
+//		JFormattedTextField ftdCPF = new JFormattedTextField(mascaraCPF);
+//		ftdCPF.setBounds(332, 101, 149, 20);
+//		pessoaFisica.setCPF(Integer.parseInt(ftdCPF.getText()));
+//		
+//		JFormattedTextField ftdTel = new JFormattedTextField(mascaraTel);
+//		ftdTel.setBounds(15, 203, 132, 20);
+//		pessoaFisica.setTelefone(Integer.parseInt(ftdTel.getText()));
+//		
+//		JFormattedTextField ftdCEP = new JFormattedTextField(mascaraCEP);
+//		ftdCEP.setBounds(15, 317, 120, 20);
+//		pessoaFisica.setCEP(Integer.parseInt(ftdCEP.getText()));
 		
 		JButton btnCriar = new JButton("Novo");
-		btnCriar.setBounds(141, 355, 57, 23);
+		btnCriar.setBounds(87, 355, 89, 23);
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparCadastro();
@@ -176,7 +204,7 @@ public class janelaDeCadastroPF extends JFrame {
 		});
 		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(227, 355, 63, 23);
+		btnSalvar.setBounds(186, 355, 89, 23);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -185,11 +213,15 @@ public class janelaDeCadastroPF extends JFrame {
 				String s3 = tfEndereco.getText();
 				String s4 = tfCidade.getText();
 				String s5 = tfEstado.getText();
-				String s6 = ftdCPF.getText();
-				String s7 = ftdDate.getText();
-				String s8 = ftdTel.getText();
-				String s9 = ftdCEP.getText();
-				
+//				String s6 = tfCPF.getText();
+//				String s7 = tfDate.getText();
+//				String s8 = tfTel.getText();
+//				String s9 = tfCEP.getText();
+//				String s6 = ftdCPF.getText();
+//				String s7 = ftdDate.getText();
+//				String s8 = ftdTel.getText();
+//				String s9 = ftdCEP.getText();
+//				
 				if(e.getSource() == btnSalvar) {
 					try {
 						FileWriter w = new FileWriter("ClientePF.txt", true);
@@ -199,10 +231,10 @@ public class janelaDeCadastroPF extends JFrame {
 						w.write(s3 + "\n");
 						w.write(s4 + "\n");
 						w.write(s5 + "\n");
-						w.write(s6 + "\n");
-						w.write(s7 + "\n");
-						w.write(s8 + "\n");
-						w.write(s9 + "\n");
+//						w.write(s6 + "\n");
+//						w.write(s7 + "\n");
+//						w.write(s8 + "\n");
+//						w.write(s9 + "\n");
 						w.close();
 					} catch (Exception ae) {
 						System.out.println(ae);
@@ -220,14 +252,14 @@ public class janelaDeCadastroPF extends JFrame {
 		
 		
 		JButton btnExcluir = new JButton("Excluir");
-		btnExcluir.setBounds(308, 355, 63, 23);
+		btnExcluir.setBounds(285, 355, 87, 23);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(389, 355, 75, 23);
+		btnCancelar.setBounds(382, 355, 97, 23);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				janelaDeCadastroPF.this.dispose();
@@ -235,33 +267,37 @@ public class janelaDeCadastroPF extends JFrame {
 		});
 		
 		JComboBox<Object> comboBox = new JComboBox<Object>();
-		comboBox.setBounds(75, 41, 30, 22);
+		comboBox.setBounds(117, 41, 30, 22);
 		contentPane.setLayout(null);
-		contentPane.add(lblConsultar);
-		contentPane.add(comboBox);
 		contentPane.add(lblCPF);
-		contentPane.add(lblNome);
-		contentPane.add(tfNome);
-		contentPane.add(ftdCPF);
-		contentPane.add(lblEndereco);
 		contentPane.add(lblCEP);
-		contentPane.add(ftdCEP);
-		contentPane.add(tfCidade);
+		contentPane.add(lblNome);
+		contentPane.add(lblEmail);
 		contentPane.add(lblCidade);
 		contentPane.add(lblEstado);
-		contentPane.add(tfEstado);
-		contentPane.add(lblDataDeNascimento);
-		contentPane.add(ftdDate);
-		contentPane.add(ftdTel);
+		contentPane.add(lblEndereco);
 		contentPane.add(lblTelefone);
-		contentPane.add(lblEmail);
-		contentPane.add(tfEmail);
+		contentPane.add(lblClientes);
+		contentPane.add(lblConsultar);
+		contentPane.add(lblDataDeNascimento);
 		contentPane.add(btnCriar);
 		contentPane.add(btnSalvar);
 		contentPane.add(btnExcluir);
 		contentPane.add(btnCancelar);
+		contentPane.add(comboBox);
+		contentPane.add(tfCPF);
+		contentPane.add(tfDate);
+		contentPane.add(tfTel);
+		contentPane.add(tfCEP);
+		contentPane.add(tfNome);
+		contentPane.add(tfEmail);
+		contentPane.add(tfCidade);
+		contentPane.add(tfEstado);
 		contentPane.add(tfEndereco);
-		contentPane.add(lblClientes);
-	}
+//		contentPane.add(ftdCPF);
+//		contentPane.add(ftdCEP);
+//		contentPane.add(ftdDate);
+//		contentPane.add(ftdTel);
 
+	}
 }

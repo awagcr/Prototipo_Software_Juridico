@@ -31,10 +31,10 @@ public class janelaDeConsulta extends JDialog {
 
 	/**
 	 * Launch the application.
-	 *
+	 */
 	public static void main(String[] args) {
 		try {
-			janelaDeConsulta dialog = new janelaDeConsulta();
+			janelaDeConsulta dialog = new janelaDeConsulta("Consulta de Clientes");
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -60,33 +60,15 @@ public class janelaDeConsulta extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			textoConsulta = new JLabel(texto);
+			textoConsulta.setBounds(127, 10, 68, 0);
 		}
+		contentPanel.setLayout(null);
 
 		textField = new JTextField();
+		textField.setBounds(28, 28, 266, 20);
 		textField.setColumns(10);
-		
-		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
-		gl_contentPanel.setHorizontalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-				.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(textField, 266, 266, 266)
-					.addGap(13))
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(122)
-					.addComponent(textoConsulta, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(112, Short.MAX_VALUE))
-		);
-		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(5)
-					.addComponent(textoConsulta)
-					.addGap(18)
-					.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(33, Short.MAX_VALUE))
-		);
-		contentPanel.setLayout(gl_contentPanel);
+		contentPanel.add(textField);
+		contentPanel.add(textoConsulta);
 		{
 			JPanel buttonPane = new JPanel(); 
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
