@@ -55,15 +55,16 @@ public class janelaDeCadastroPF extends JFrame {
 	}
 	
 	public void limparCadastro() {
+		PessoaNatural pessoaFisica = new PessoaNatural();
 		tfNome.setText("");
 		tfEmail.setText("");
 		tfEndereco.setText("");
 		tfCidade.setText("");
 		tfEstado.setText("");
-//		tfCPF.setText("");
-//		tfDate.setText("");
-//		tfTel.setText("");
-//		tfCEP.setText("");
+		tfCPF.setText(String.valueOf(pessoaFisica.getCPF()));
+		tfDate.setText(String.valueOf(pessoaFisica.getDataDeNascimento()));
+		tfTel.setText(String.valueOf(pessoaFisica.getTelefone()));
+		tfCEP.setText(String.valueOf(pessoaFisica.getCEP()));
 //		ftdCPF.setText("");
 //		ftdDate.setText("");
 //		ftdTel.setText("");
@@ -295,7 +296,7 @@ public class janelaDeCadastroPF extends JFrame {
 			contentPane.add(tfTel);
 			contentPane.add(tfCEP);
 		} catch (NullPointerException npe) {
-			System.out.println("Erro aqui");
+			System.out.println("Erro de NullPointerException");
 		}		
 		contentPane.add(tfNome);
 		contentPane.add(tfEmail);

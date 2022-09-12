@@ -78,29 +78,13 @@ public class janelaDeConsultaPF extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						janelaDeConsultaPF.this.dispose();
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
 		{
-			setLayout(new BorderLayout(0, 0));
+			getContentPane().setLayout(new BorderLayout(0, 0));
 			
 			table = new JTable(getDataColumns(), getNameColumns());
 			JScrollPane scrollPane = new JScrollPane(table);
-			add(scrollPane, BorderLayout.CENTER);
+			getContentPane().add(scrollPane, BorderLayout.CENTER);
 		}
 	}
 
